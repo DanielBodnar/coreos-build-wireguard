@@ -1,0 +1,15 @@
+set -x -v
+if [ -e /root/coreos_developer_container.bin ]; then
+    echo "We found the developer image in place already"
+elif [ -e /home/core/coreos_developer_container.bin ]; then
+    # For some reason, the direct copy seems to be broken
+    mv /home/core/coreos_developer_container.bin .
+    chown root:root coreos_developer_container.bin
+elif [ -e /home/core/coreos_developer_container.bin.lz4 ]; then
+    lz4cat </home/core/coreos_developer_container.bin.lz4 >coreos_developer_container.bin
+elif [ -e /home/core/coreos_developer_container.bin.bz2 ]; then
+    bunzip2 </home/core/coreos_developer_container.bin.bz2 >coreos_developer_container.bin
+else
+    echo "something is hosed, there's no developer container"
+    exit 1
+fi
