@@ -1,10 +1,12 @@
 set -v -x
 
 #pkg=WireGuard-0.0.20171211
-pkg=WireGuard-0.0.20180420
+#pkg=WireGuard-0.0.20180420
+pkg=WireGuard-0.0.20180420.nop0
 
 # Clone a specific tag.
-git clone --branch="${pkg##*-}" --depth=1 https://git.zx2c4.com/WireGuard "/tmp/$pkg"
+# git clone --branch="${pkg##*-}" --depth=1 https://git.zx2c4.com/WireGuard "/tmp/$pkg"
+git clone --branch="${pkg##*-}" --depth=1 https://github.com/nopdotcom/WireGuard "/tmp/$pkg"
 
 # Verify the tag's signature.
 # gpg2 --keyserver pool.sks-keyservers.net --recv-keys AB9942E6D4A4CFC3412620A749FC7012A5DE03AE
