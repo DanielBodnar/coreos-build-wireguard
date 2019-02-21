@@ -1,3 +1,5 @@
 set -v
 systemd-nspawn --bind="$PWD:/host" --image=coreos_developer_container.bin /bin/bash -l /host/build/build-wireguard.sh
-cp /root/WireGuard* /mnt/
+source /etc/lsb-release
+mkdir -p "/mnt/$DISTRIB_RELEASE"
+cp /root/WireGuard* "/mnt/$DISTRIB_RELEASE/"
