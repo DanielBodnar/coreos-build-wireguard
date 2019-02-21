@@ -1,6 +1,7 @@
 set -v -x
 
-pkg=WireGuard-0.0.20171211
+#pkg=WireGuard-0.0.20171211
+pkg=WireGuard-0.0.20180420
 
 # Clone a specific tag.
 git clone --branch="${pkg##*-}" --depth=1 https://git.zx2c4.com/WireGuard "/tmp/$pkg"
